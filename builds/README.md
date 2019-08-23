@@ -28,12 +28,7 @@ File `dockerenv.default` contains a list of required env vars; most of these hav
 
 Out of the box, each `Dockerfile` has the correct values predefined for `S3_BUCKET`, `S3_PREFIX`, and `S3_REGION`. If you're building your own packages, you'll likely want to change `S3_BUCKET` and `S3_PREFIX` to match your info. Instead of setting `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` into that file, you may also pass them to `docker run` through the environment, or explicitly using `--env`, in order to prevent accidental commits of credentials.
 
-For Heroku-18 stack
--------------------
-
-1. Ensure GNU Make and Docker are installed.
-2. From the root of the buildpack repository, run: `make buildenv-heroku-18`
-3. Follow the instructions displayed!
+### Passing AWS credentials to the container
 
 If you want to deploy packages and thus need to pass `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`, you can either pass them explicitly, through your environment, or through an env file.
 
