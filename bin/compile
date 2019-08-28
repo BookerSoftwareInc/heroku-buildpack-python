@@ -289,6 +289,12 @@ source "$BIN_DIR/steps/sqlite3"
 buildpack_sqlite3_install
 mtime "sqlite3.install.time" "${start}"
 
+# Bowtie CUSTUM ADDITION for C Dependencies
+printf "\n\nUpdating apt-get\n\n"
+apt-get update
+printf "\n\Installing  C Dependencies\n\n"
+apt-get install libxmlsec1-dev # Used for xml-secbinding
+
 # pip install
 # -----------
 
