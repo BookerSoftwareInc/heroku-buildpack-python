@@ -291,6 +291,7 @@ mtime "sqlite3.install.time" "${start}"
 
 # Bowtie CUSTUM ADDITION for C Dependencies
 printf "\n\nUpdating apt-get\n\n"
+mkdir -p /var/lib/apt/lists/partial
 apt-get update
 printf "\n\Installing  C Dependencies\n\n"
 apt-get install libxmlsec1-dev # Used for xml-secbinding
