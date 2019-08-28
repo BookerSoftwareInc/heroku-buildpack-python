@@ -15,11 +15,6 @@
 # Fail fast and fail hard.
 set -eo pipefail
 
-# Bowtie CUSTUM ADDITION for C Dependencies
-printf "\n\nUpdating apt-get\n\n"
-mkdir -p /var/lib/apt/lists/partial
-apt-get update
-
 # Boostrap the Buildpack Standard Library.
 export BPLOG_PREFIX="buildpack.python"
 export BUILDPACK_LOG_FILE=${BUILDPACK_LOG_FILE:-/dev/null}
@@ -294,9 +289,6 @@ source "$BIN_DIR/steps/sqlite3"
 buildpack_sqlite3_install
 mtime "sqlite3.install.time" "${start}"
 
-printf "\n\Installing  C Dependencies\n\n"
-apt-get install libxmlsec1-dev # Used for xml-secbinding
-
 # pip install
 # -----------
 
@@ -326,7 +318,7 @@ fi
 # Django collectstatic support.
 # The buildpack automatically runs collectstatic for Django applications.
 # This is the cause for the majority of build failures on the Python platform.
-# These failures are intentional — if collectstatic (which can be tricky, at times) fails,
+# These failures are intentional — if collectstatic (which can be tricky, at times) fails,
 # your build fails.
 (( start=$(nowms) ))
 sub_env "$BIN_DIR/steps/collectstatic"
